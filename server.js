@@ -1,13 +1,40 @@
 const express = require('express');
+const path = require('path');
 
-// Import our files containing our routes
-const notesRouter = require('./note');
+// Import the notes router
+const api = require('./routes/index');
 
 
-// Create and instance of express so we can apply the middleware and routing
+const PORT = process.env.PORT || 3000;
+
 const app = express();
 
-app.use( notesRouter);
+// Middleware for parsing JSON and urlencoded form data
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Middleware to serve up static assets from the public folder
+app.use(express.static('public'));
+
+// Send all the requests that begin with /api to the server.js in the routes folder
+// http://localhost:3001/api
+app.use('/api', api);
+
+// This view route is a GET route for the homepage
+app.get('/', (req, res) =>
+  res.sendFile(path.join(__dirname, '/public/index.html'))
+);
 
 
-module.exports = app;
+// This view route is a GET route for the feedback page
+app.get('/notes', (req, res) =>
+  res.sendFile(path.join(__dirname, '/public/notes.html'))
+);
+
+
+
+app.listen(PORT, () =>
+  console.log(`App listening at http://localhost:${PORT} 🚀`)
+);
+
+
