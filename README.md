@@ -18,6 +18,6 @@ To use noteskeeper user have to write title for notes and then text  with descri
   
 
   ## LINKS
-  - Repository link- https://github.com/MK0999/Noteskeeper
+  - Repository link- https://github.com/MK0999/Notesmaker
   - Heroku link- https://notesmaker-39917543b6b3.herokuapp.com/
 
