@@ -25,7 +25,7 @@ notes.post('/', (req, res) => {
 
   };
 
-  fs.readFile('./db/db.json', 'utf8', function (error, data) {
+  fs.readFile('./db.json', 'utf8', function (error, data) {
     const newData = JSON.parse(data)
     newData.push(newNote)
 
