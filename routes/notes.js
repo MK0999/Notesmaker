@@ -3,21 +3,15 @@ const uuid = require('../helpers/uuid');
 const fs = require('fs');
 
 
-//GET /notes should return the notes.html file.
-
-
-
-
-
 // http://localhost:3001/api/notes/
-//GET /api/notes should read the db.json file and return all saved notes as JSON.
+//GET /api/notes  read the db.json file and return all saved notes as JSON.
 notes.get('/', (req, res) => {
   console.info(`${req.method} note maker`);
   fs.readFile('./db/db.json', 'utf8', function (error, data) { res.json(JSON.parse(data)) });
 })
 
-//POST /api/notes should receive a new note to save on the request body, add it to the db.json file,
-// and then return the new note to the client. You'll need to find a way to give each note a unique id when it's saved .
+//POST /api/notes receive a new note to save on the request body, add it to the db.json file,
+// and then return the new note to the client. 
 
 notes.post('/', (req, res) => {
   console.log(`${req.method} request received`)
@@ -55,6 +49,6 @@ notes.post('/', (req, res) => {
 
 
 
-//GET * should return the index.html file.
+
 
 module.exports = notes;
